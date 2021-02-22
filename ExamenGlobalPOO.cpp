@@ -1,3 +1,13 @@
+/*
+*
+* Autor:    Mauricio Farfan
+* Registro: 20310033
+* Grupo:    2P1
+*
+* PROYECTO GLOBAL PARA PROGRAMACIÓN ORIENTADA A OBJETOS
+*
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -19,6 +29,7 @@ class SimpleList {
 
 class Queue : public SimpleList {
     public: 
+        // Sobre escritura de método para borrar. Único método que se emplea diferente en una lista simple.
         bool DeleteNode();
         Queue(){};
 };
@@ -50,6 +61,7 @@ int ShowListsMenu()
         cout << "\n\n\tSeleccione la lista con la que desea operar.\n\n";
         cout << "[1]. Lista simple.\n[2]. Cola. (FiFo)\n[3]. Salir del programa.\n\n";
         cin >> option;
+    // Validación de datos de entrada.
     } while (option < 1 || option > 3);
     system("cls");
     return option;
@@ -72,6 +84,7 @@ void ShowOperationMenu(SimpleList simpleList, Queue queue, bool isList)
         {
         case 1:
             cout << "\n\tNumero a insertar:\t"; cin >> operationNumber;
+            // Definición de método a emplear basado en la estructura de dato utilizada.
             (isList) ? simpleList.InsertNode(operationNumber) : queue.InsertNode(operationNumber);
             cout << "\nNumero insertado correctamente.\n\n";
             break;
@@ -151,6 +164,7 @@ void SimpleList::InsertNode(int number)
 }
 void SimpleList::PrintList(bool isList)
 {
+    // Validaciones sobre listas y colas vacías.
     if (first == NULL)
     {
         cout << "La lista esta vacia";
@@ -173,7 +187,6 @@ int SimpleList::SearchNode(int number)
         cout << "La lista esta vacia";
         return NULL;
     }
-
     Node* actualNode = new Node();
     actualNode = first;
     int position = 0;
